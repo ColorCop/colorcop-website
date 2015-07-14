@@ -1,2 +1,13 @@
 # colorcop-website
-colorcop.net
+
+===
+Installation
+
+    gem install jekyll
+    gem install s3_website
+
+
+==== 
+running for testing
+
+    jekyll serve

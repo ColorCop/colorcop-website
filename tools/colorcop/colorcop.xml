@@ -1,0 +1,166 @@
+<?xml version="1.0" ?> 
+<XML_DIZ_INFO>
+<MASTER_PAD_VERSION_INFO>
+ <MASTER_PAD_VERSION>2.01</MASTER_PAD_VERSION>
+<MASTER_PAD_EDITOR>PAD Creator version: 2.0.1 available for FREE at http://www.padcreator.com </MASTER_PAD_EDITOR>
+ <MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to http://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+</MASTER_PAD_VERSION_INFO>
+
+<Company_Info>
+ <Company_Name>Jay Prall</Company_Name>
+ <Address_1>6 Bailey St</Address_1>
+ <Address_2 />
+ <City_Town>Somerville</City_Town>
+ <State_Province>MA</State_Province>
+ <Zip_Postal_Code>02144</Zip_Postal_Code>
+ <Country>USA</Country>
+ <Company_WebSite_URL>http://j4y.net/</Company_WebSite_URL>
+  <Contact_Info>
+  <Author_First_Name>Jay</Author_First_Name>
+  <Author_Last_Name>Prall</Author_Last_Name>
+  <Author_Email>support@prall.net</Author_Email>
+  <Contact_First_Name>Jay</Contact_First_Name>
+  <Contact_Last_Name>Prall</Contact_Last_Name>
+  <Contact_Email>support@prall.net</Contact_Email>
+ </Contact_Info>
+ <Support_Info>
+  <Sales_Email>support@prall.net</Sales_Email>
+  <Support_Email>support@prall.net</Support_Email>
+  <General_Email>support@prall.net</General_Email>
+  <Sales_Phone />
+  <Support_Phone />
+  <General_Phone />
+  <Fax_Phone />
+ </Support_Info>
+</Company_Info>
+
+<Program_Info>
+ <Program_Name>Color Cop</Program_Name>
+ <Program_Version>5.4</Program_Version>
+ <Program_Release_Month>02</Program_Release_Month>
+ <Program_Release_Day>23</Program_Release_Day>
+ <Program_Release_Year>2003</Program_Release_Year>
+ <Program_Cost_Dollars>0</Program_Cost_Dollars>
+ <Program_Cost_Other_Code>USD</Program_Cost_Other_Code>
+ <Program_Cost_Other>0</Program_Cost_Other>
+ <Program_Type>Freeware</Program_Type>
+ <Program_Release_Status>Major Update</Program_Release_Status>
+ <Program_Install_Support>Install and Uninstall</Program_Install_Support>
+ <Program_OS_Support>Win95,Win98,WinME,WinNT 4.x,WinXP,Windows2000,Windows2003</Program_OS_Support>
+ <Program_Language>English</Program_Language>
+ <Program_Change_Info />
+ <Program_Specific_Category>Developement Tools</Program_Specific_Category>
+ <Program_Category_Class>Graphic Apps::Screen Capture</Program_Category_Class>
+ <Program_Categories>Color Pickers</Program_Categories>
+ <Program_System_Requirements>16MB RAM, 256 color video card</Program_System_Requirements>
+ <Includes_JAVA_VM>N</Includes_JAVA_VM>
+ <Includes_VB_Runtime>N</Includes_VB_Runtime>
+ <Includes_DirectX>N</Includes_DirectX>
+ <File_Info>
+  <Filename_Versioned>5.4</Filename_Versioned>
+  <Filename_Previous>v4</Filename_Previous>
+  <Filename_Generic>clrcp5.exe</Filename_Generic>
+  <Filename_Long>colorcop-setup.exe</Filename_Long>
+  <File_Size_Bytes>322000</File_Size_Bytes>
+  <File_Size_K>314</File_Size_K>
+  <File_Size_MB>0.31</File_Size_MB>
+ </File_Info>
+ <Expire_Info>
+  <Has_Expire_Info>N</Has_Expire_Info>
+  <Expire_Count />
+  <Expire_Based_On>Days</Expire_Based_On>
+  <Expire_Other_Info />
+ </Expire_Info>
+</Program_Info>
+
+<Program_Descriptions>
+ <English>
+  <Keywords>color picker, eyedropper, magnifier, complementary, HSL, HSV, RGB, hex, web, colour</Keywords>
+  <Char_Desc_45>a multi-purpose color picker with eyedropper</Char_Desc_45>
+  <Char_Desc_80>a multi-purpose color picker for web designers and programmers</Char_Desc_80>
+  <Char_Desc_250>Color Cop is a multi-purpose color picker for web designers and 
+programmers. It features an eyedropper, magnifier, variable magnification
+levels, 3 by 3 and 5 by 5 average sampling, snap to websafe, color history, 
+and more. Multiple hex outputs.</Char_Desc_250>
+  <Char_Desc_450>Color Cop is a multi-purpose color picker for web designers and 
+programmers. It features an eyedropper, magnifier, variable magnification
+levels, 3 by 3 and 5 by 5 average sampling, snap to websafe, color history, 
+and a 42 color complementary palette. Color Cop will convert RGB decimal values 
+to Hexadecimal color codes. It has color code support for HTML Hex, 
+Delphi Hex, PowerBuilder, Visual Basic Hex, and Visual C++ Hex.</Char_Desc_450>
+  <Char_Desc_2000>Color Cop is a multi-purpose color picker for web designers and 
+programmers. It features an eyedropper, magnifier, variable magnification
+levels, 3 by 3 and 5 by 5 average sampling, snap to websafe, color history, 
+and a 42 color complementary palette. Color Cop will convert RGB decimal values 
+to Hexadecimal color codes. It has color code support for HTML Hex, 
+Delphi Hex, PowerBuilder, Visual Basic Hex, and Visual C++ Hex.</Char_Desc_2000>
+ </English>
+</Program_Descriptions>
+
+<Web_Info>
+ <Application_URLs>
+  <Application_Info_URL>http://colorcop.net/</Application_Info_URL>
+  <Application_Order_URL />
+  <Application_Screenshot_URL>http://colorcop.net/tools/colorcop/images/prerelease.png</Application_Screenshot_URL>
+  <Application_Icon_URL>http://colorcop.net/tools/colorcop/images/ccicon.png</Application_Icon_URL>
+  <Application_XML_File_URL>http://colorcop.net/tools/colorcop/colorcop.xml</Application_XML_File_URL>
+ </Application_URLs>
+ <Download_URLs>
+  <Primary_Download_URL>http://colorcop.net/tools/colorcop/colorcop-setup.exe</Primary_Download_URL>
+  <Secondary_Download_URL>http://colorcop.net/tools/colorcop/colorcop.zip</Secondary_Download_URL>
+  <Additional_Download_URL_1 />
+  <Additional_Download_URL_2 />
+ </Download_URLs>
+</Web_Info>
+
+<Permissions>
+ <Distribution_Permissions>Distribute Color cop all you want.
+</Distribution_Permissions>
+ <EULA>Color Cop License
+=================
+
+Copyright (C) 1999-2010 Jay Prall. All rights reserved.
+http://prall.net/contact
+
+
+Redistribution 
+
+  You may distribute Color Cop in any way, including shareware and freeware 
+  sites, CD-ROMS, or your website.
+
+
+Fees
+
+  Color Cop is free, but if you wish to express your appreciation for the time and 
+  resources I've expended developing and supporting it, I do accept and 
+  appreciate donations.
+
+  If you wish to make one please go here:
+  http://colorcop.net/donate
+
+Warranty
+
+  THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS "AS IS" AND
+  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+  OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+  OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+  SUCH DAMAGE.
+</EULA>
+</Permissions>
+
+
+
+<MSN>
+ <MSN_FORM>Y</MSN_FORM>
+ <MSN_IS_32bit>N</MSN_IS_32bit>
+</MSN>
+
+
+</XML_DIZ_INFO>
+
