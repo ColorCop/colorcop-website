@@ -1,0 +1,14 @@
+# Site settings
+title: a free multi-purpose color picker for Windows
+email: jayprall@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Color Cop is a free multi-purpose color picker for Microsoft Windows
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://colorcop.net" # the base hostname & protocol for your site
+twitter_username: colorcop
+github_username: colorcop
+
+# Build settings
+markdown: kramdown
+
+#gems:

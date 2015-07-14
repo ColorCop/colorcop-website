@@ -1,0 +1,32 @@
+---
+layout: page
+title: screenshots
+permalink: /screenshots/
+---
+
+<p>Here are a few animated gifs that I created using a screen recording software called Camtasia Studio.  There are also some Color Cop video tutorials posted on YouTube. 
+</p>
+
+<script type="text/javascript">
+//<![CDATA[
+
+
+var banners = ['/images/1.gif?1353261722','/images/2.gif?1353261722','/images/3.gif?1353261722','/images/4.gif?1353261722','/images/5.gif?1353261722','/images/6.gif?1353261722'];
+var current = 0;
+function startDemo() {
+    nextAnimation();
+    setInterval('nextAnimation()',4000);
+}
+function nextAnimation() {
+    current = (current+1) % 6;
+    // jquery
+    console.log(current);
+    $('#screenshot-image').attr("src", src);
+}
+
+
+setTimeout('startDemo()', 300);
+
+//]]>
+</script>
+    <p><img alt="Color Cop demo" id="screenshot-image" onclick="window.location='/download'" src="/images/1.gif?1353261722" style="padding-left: 50px;cursor: pointer" /></p>
