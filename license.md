@@ -15,7 +15,7 @@ donation to support our ongoing development costs.</font></p>
 freeware programs; may I also mirror Color Cop?<br></strong>Yes, so long 
 as you do not charge for access to your website, you may absolutely do 
 this. Redistribution of Color Cop is permitted so long as it is 
-free-of-charge. 
+free-of-charge.
 </font></p>
 
 <p><font size="2"><strong>May I include Color Cop on a cover CD/DVD that 
@@ -27,6 +27,7 @@ inclusion of Color Cop.</font></p>
         </b><font size="2">Before using Color Cop, you must accept 
 the License Agreement as part of the setup process. The license is as 
 follows, and should be perused.</font><blockquote>
+
     <p><font face="Courier New" size="2">Color Cop<br>Copyright (C) 
     Jay Prall.  All Rights Reserved.<br><br><br>Color Cop is free for use in any 
     environment, including but not necessarily limited to: personal, 
