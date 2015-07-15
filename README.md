@@ -3,11 +3,15 @@
 ===
 Installation
 
-    gem install jekyll
-    gem install s3_website
+    bundle install
 
 
 ==== 
-running for testing
+Running locally
 
     jekyll serve
+
+==== 
+Deploy
+
+    s3_website push
