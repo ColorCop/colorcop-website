@@ -8,26 +8,6 @@ permalink: /screenshots/
 </p>
 
 
-<script type="text/javascript">
-//<![CDATA[
-var banners = ['/images/1.gif','/images/2.gif','/images/3.gif','/images/4.gif','/images/5.gif','/images/6.gif'];
-var current = 0;
-function startDemo() {
-    nextAnimation();
-    setInterval('nextAnimation()',4000);
-}
-function nextAnimation() {
-    current = (current+1) % 6;
-    console.log(banners[current]);
-    console.log($('#screenshot-image'));
-    $('#screenshot-image').attr('src', banners[current]);
-}
+<p><img alt="Color Cop animated demo" id="screenshot-image" onclick="window.location='/download'" src="/images/1.gif" style="padding-left: 50px;cursor: pointer" /></p>
 
-$(function() {
-  setTimeout('startDemo()', 300);
-});
-
-//]]>
-</script>
-
-    <p><img alt="Color Cop demo" id="screenshot-image" onclick="window.location='/download'" src="/images/1.gif?1353261722" style="padding-left: 50px;cursor: pointer" /></p>
+<script type="text/javascript" src="/js/demo.js"></script>
