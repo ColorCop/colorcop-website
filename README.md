@@ -1,5 +1,5 @@
 # colorcop-website
-[![Build Status](https://travis-ci.org/ColorCop/color-cop-website.png?branch=master)][travis]
+[![Build Status](https://travis-ci.org/ColorCop/colorcop-website.svg?branch=master)](https://travis-ci.org/ColorCop/colorcop-website)
 
 ===
 Installation
