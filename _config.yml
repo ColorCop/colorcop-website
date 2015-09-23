@@ -11,4 +11,4 @@ github_username: colorcop
 # Build settings
 markdown: kramdown
 
-#gems:
+exclude: [vendor]
