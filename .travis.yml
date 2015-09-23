@@ -3,6 +3,7 @@ rvm:
 - 2.1
 script:
   - bundle exec jekyll build
+  - bundle exec rake
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
