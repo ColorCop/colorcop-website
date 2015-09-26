@@ -36,10 +36,12 @@ permalink: /whatsnew/
 
 <h2>v5.3 - 02/23/03</h2>
 <ul>
-  <li>added cross hair curson option</li>
-  <li>added detect websafe</li>
-  <li>added relative position measurements</li>
-  <li>added magnify while eyedropping</li>
+  <li>Detect Websafe - Displays whether the selected color is websafe or not</li>
+  <li>Allow Multiple Instances - It's now possible to set that only one instance of color cop can run at once</li>
+  <li>RGB Float mode - outputs the selected color in R/255,G/255,B/255 (0.47,0.47,1.00) someone is using this with a 3D program called Renderman.  Alt+[ will decrease float precision and Alt+] will increate float precision.</li>
+  <li>RGB Int mode - outputs the selected color in in R,G,B (128,255,64)</li>
+  <li>Relative position measurements - Press the control key while eyedropping and the coordinates will be set to zero (0,0).  Drag the mouse to a new location and it will display the distance relative to the point you were over when you pressed control.  If you press control again it will zero (0,0)  Note that the measurement is zero-based.</li>
+  <li>Magnify while eyedropping - With this option selected, you can magnify while you are eyedropping.  A small black square will appear to show you the location of the cursor.</li>
 </ul>
 
 <h2>v5.2 - 11/23/02</h2>
