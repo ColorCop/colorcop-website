@@ -1,19 +1,19 @@
 # colorcop-website
 
-[![GitHub Actions Status](https://github.com/ColorCop/colorcop-website/workflows/Test/badge.svg?branch=master)](https://github.com/ColorCop/colorcop-website/actions)
+[![GitHub Actions Status](https://github.com/ColorCop/colorcop-website/workflows/Test/badge.svg)](https://github.com/ColorCop/colorcop-website/actions)
 
-===
-Installation
+## Installation
 
     bundle install
 
-
-==== 
-Running locally
+## Running locally
 
     jekyll serve
 
-==== 
-Deploy
+## Running tests
+
+    bundle exec rake
+
+## Deploy
 
     s3_website push
