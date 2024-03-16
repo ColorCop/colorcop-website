@@ -99,15 +99,15 @@ Delphi Hex, PowerBuilder, Visual Basic Hex, and Visual C++ Hex.</Char_Desc_2000>
 
 <Web_Info>
  <Application_URLs>
-  <Application_Info_URL>http://colorcop.net/</Application_Info_URL>
+  <Application_Info_URL>https://colorcop.net/</Application_Info_URL>
   <Application_Order_URL />
-  <Application_Screenshot_URL>http://colorcop.net/tools/colorcop/images/prerelease.png</Application_Screenshot_URL>
-  <Application_Icon_URL>http://colorcop.net/tools/colorcop/images/ccicon.png</Application_Icon_URL>
-  <Application_XML_File_URL>http://colorcop.net/tools/colorcop/colorcop.xml</Application_XML_File_URL>
+  <Application_Screenshot_URL>https://colorcop.net/tools/colorcop/images/prerelease.png</Application_Screenshot_URL>
+  <Application_Icon_URL>https://colorcop.net/tools/colorcop/images/ccicon.png</Application_Icon_URL>
+  <Application_XML_File_URL>https://colorcop.net/tools/colorcop/colorcop.xml</Application_XML_File_URL>
  </Application_URLs>
  <Download_URLs>
-  <Primary_Download_URL>http://colorcop.net/tools/colorcop/colorcop-setup.exe</Primary_Download_URL>
-  <Secondary_Download_URL>http://colorcop.net/tools/colorcop/colorcop.zip</Secondary_Download_URL>
+  <Primary_Download_URL>https://colorcop.net/tools/colorcop/colorcop-setup.exe</Primary_Download_URL>
+  <Secondary_Download_URL>https://colorcop.net/tools/colorcop/colorcop.zip</Secondary_Download_URL>
   <Additional_Download_URL_1 />
   <Additional_Download_URL_2 />
  </Download_URLs>
@@ -120,8 +120,6 @@ Delphi Hex, PowerBuilder, Visual Basic Hex, and Visual C++ Hex.</Char_Desc_2000>
 =================
 
 Copyright (C) 1999-2010 Jay Prall. All rights reserved.
-http://prall.net/contact
-
 
 Redistribution 
 
@@ -136,7 +134,7 @@ Fees
   appreciate donations.
 
   If you wish to make one please go here:
-  http://colorcop.net/donate
+  https://colorcop.net/donate
 
 Warranty
 

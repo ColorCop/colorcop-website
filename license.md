@@ -23,7 +23,7 @@ is included in the magazine I&#39;m publishing?<br></strong>Yes, in general,
 you may do this so long as you are not charging extra due to the 
 inclusion of Color Cop.</font></p>
 
-<p><b><a name="license"></a>License<br>
+<p><b><a name="license" data-proofer-ignore></a>License<br>
         </b><font size="2">Before using Color Cop, you must accept 
 the License Agreement as part of the setup process. The license is as 
 follows, and should be perused.</font><blockquote>
