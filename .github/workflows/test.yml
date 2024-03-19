@@ -22,4 +22,6 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
     - name: Run tests
-      run: bundle exec jekyll build
+      run: |
+        bundle exec jekyll build
+        bundle exec rubocop
