@@ -16,4 +16,4 @@
 
 ## Deploy
 
-    s3_website push
+There is a [Github Action](https://github.com/ColorCop/colorcop-website/actions/workflows/deploy.yml)

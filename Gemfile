@@ -6,4 +6,3 @@ gem 'html-proofer'
 gem 'jekyll'
 gem 'rake'
 gem 'rubocop', require: false
-gem 's3_website'
