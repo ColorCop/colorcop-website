@@ -23,5 +23,5 @@ jobs:
 
     - name: Run tests
       run: |
-        bundle exec jekyll build
+        bundle exec rake
         bundle exec rubocop
