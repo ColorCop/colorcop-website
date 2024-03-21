@@ -16,4 +16,4 @@
 
 ## Deploy
 
-There is a [Github Action](https://github.com/ColorCop/colorcop-website/actions/workflows/deploy.yml)
+There is a [Github Action](https://github.com/ColorCop/colorcop-website/actions/workflows/deploy.yml) that runs when code merges to `master`.
