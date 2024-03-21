@@ -1,2 +1,11 @@
 _site/
 .sass-cache/
+
+# Terraform
+.terraform
+*.tfstate
+*.tfstate.backup
+
+# Terragrunt
+.terragrunt-cache
+

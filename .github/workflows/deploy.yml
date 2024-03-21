@@ -1,0 +1,51 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: us-east-1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-Terraform@v3.0.0
+      with:
+        terraform_version: 1.5.7
+        terraform_wrapper: true
+
+    - name: Setup Terragrunt
+      uses: autero1/action-terragrunt@v3.0.2
+      with:
+        terragrunt-version: 0.55.18
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Terragrunt Plan
+      run: terragrunt plan --terragrunt-working-dir terragrunt/live/website/
+
+    - name: Terragrunt Apply
+      run: terragrunt apply -auto-approve --terragrunt-working-dir terragrunt/live/website/
+
+    - name: Build
+      run: bundle exec jekyll build
+      env:
+        JEKYLL_ENV: production
+
+    - name: Copy output to S3
+      run: aws s3 sync ./_site/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --acl public-read --delete --cache-control max-age=604800
