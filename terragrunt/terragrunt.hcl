@@ -11,14 +11,12 @@ generate "provider" {
   contents  = <<EOF
 provider "aws" {
   region = "us-east-1"
-
-  # Only these AWS Account IDs may be operated on by this template
   allowed_account_ids = ["651111921281"]
 }
 EOF
 }
 
-# Configure Terragrunt to automatically store tfstate files in an S3 bucket
+# Configure Terragrunt to store tfstate files in an S3 bucket
 remote_state {
   backend = "s3"
   config = {
