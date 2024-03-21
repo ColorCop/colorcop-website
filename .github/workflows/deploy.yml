@@ -22,6 +22,24 @@ jobs:
       with:
         bundler-cache: true
 
+    - name: Setup Terraform
+      uses: hashicorp/setup-Terraform@v3.0.0
+      with:
+        terraform_version: 1.5.7
+        terraform_wrapper: true
+
+    - name: Setup Terragrunt
+      uses: autero1/action-terragrunt@v3.0.2
+      with:
+        terragrunt-version: 0.55.18
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Terragrunt Plan
+      run: terragrunt plan --terragrunt-working-dir terragrunt/live/website/
+
+    - name: Terragrunt Apply
+      run: terragrunt apply -auto-approve --terragrunt-working-dir terragrunt/live/website/
+
     - name: Build
       run: bundle exec jekyll build
       env:
