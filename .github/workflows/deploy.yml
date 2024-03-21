@@ -42,6 +42,11 @@ jobs:
     - name: Terragrunt Apply
       run: terragrunt apply -auto-approve --terragrunt-working-dir terragrunt/live/website/
 
+    - name: Terragrunt Output
+      id: terraform
+      run: |
+        printf "distribution_id=%s\n" $(terragrunt output --terragrunt-working-dir terragrunt/live/website/ distribution_id) >> "$GITHUB_OUTPUT"
+
     - name: Build
       run: bundle exec jekyll build
       env:
@@ -49,3 +54,7 @@ jobs:
 
     - name: Copy output to S3
       run: aws s3 sync ./_site/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --acl public-read --delete --cache-control max-age=604800
+
+    - name: Invalidate Cloudfront
+      run: aws cloudfront create-invalidation --distribution-id ${{ steps.terraform.outputs.distribution_id }} --paths "/*"
+
