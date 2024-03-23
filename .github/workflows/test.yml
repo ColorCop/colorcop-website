@@ -25,3 +25,14 @@ jobs:
       run: |
         bundle exec rake
         bundle exec rubocop
+
+    - uses: terraform-linters/setup-tflint@v4
+      name: Setup TFLint
+      with:
+        tflint_version: v0.50.3
+
+    - name: Run TFLint init
+      run: tflint --init
+
+    - name: Run TFLint init
+      run: tflint --chdir terraform/website/
