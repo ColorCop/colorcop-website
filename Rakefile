@@ -4,20 +4,22 @@ require 'html-proofer'
 require 'jekyll'
 require 'rubocop/rake_task'
 
+# add rubocop rake task
 RuboCop::RakeTask.new
 
-task default: [:test]
-
-desc 'build Jekyll site and run HTML proofer on the output'
-task :test do
+desc 'build the Jekyll project'
+task :build do
   config = Jekyll.configuration({
                                   'source' => './',
                                   'destination' => './_site'
                                 })
   site = Jekyll::Site.new(config)
-  # build the jekyll project
   Jekyll::Commands::Build.build site, config
+end
 
+desc 'run HTML proofer'
+task :test do
+  Rake::Task['build'].execute
   # ignore 400 status codes when the proofer follows twitter links
   options = { ignore_status_codes: [400] }
   HTMLProofer.check_directory('./_site', options).run
@@ -33,4 +35,4 @@ task :lint do
   sh 'tflint --chdir terraform/website/ -c ../../.tflint.hcl'
 end
 
-task default: [:test]
+task default: %i[test lint]
