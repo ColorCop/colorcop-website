@@ -34,5 +34,5 @@ jobs:
     - name: Run TFLint init
       run: tflint --init
 
-    - name: Run TFLint init
+    - name: Run TFLint
       run: tflint --chdir terraform/website/
