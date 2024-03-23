@@ -11,4 +11,4 @@ github_username: colorcop
 # Build settings
 markdown: kramdown
 
-exclude: [vendor]
+exclude: [vendor, terraform, terragrunt]
