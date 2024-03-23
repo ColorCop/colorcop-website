@@ -11,4 +11,5 @@ github_username: colorcop
 # Build settings
 markdown: kramdown
 
-exclude: [vendor, terraform, terragrunt]
+# exclude some directories and files that don't belong in the website
+exclude: [terraform, terragrunt, Rakefile, README.md]

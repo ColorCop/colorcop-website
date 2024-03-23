@@ -21,18 +21,13 @@ jobs:
       with:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
-    - name: Run tests
-      run: |
-        bundle exec rake
-        bundle exec rubocop
-
-    - uses: terraform-linters/setup-tflint@v4
-      name: Setup TFLint
+    - name: Setup TFLint
+      uses: terraform-linters/setup-tflint@v4
       with:
         tflint_version: v0.50.3
 
-    - name: Run TFLint init
-      run: tflint --init
+    - name: Run tests
+      run: bundle exec rake test
 
-    - name: Run TFLint
-      run: tflint --chdir terraform/website/
+    - name: Run linters
+      run: bundle exec rake lint

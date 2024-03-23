@@ -12,7 +12,11 @@
 
 ## Running tests
 
-    bundle exec rake
+    rake test
+
+## Running linters
+
+    rake lint
 
 ## Deploy
 
