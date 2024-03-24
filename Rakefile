@@ -9,17 +9,13 @@ RuboCop::RakeTask.new
 
 desc 'build the Jekyll project'
 task :build do
-  config = Jekyll.configuration({
-                                  'source' => './',
-                                  'destination' => './_site'
-                                })
+  config = Jekyll.configuration
   site = Jekyll::Site.new(config)
-  Jekyll::Commands::Build.build site, config
+  Jekyll::Commands::Build.build(site, config)
 end
 
 desc 'run HTML proofer'
-task :test do
-  Rake::Task['build'].execute
+task test: :build do
   # ignore 400 status codes when the proofer follows twitter links
   options = { ignore_status_codes: [400] }
   HTMLProofer.check_directory('./_site', options).run
