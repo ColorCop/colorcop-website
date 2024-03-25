@@ -11,6 +11,7 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: us-east-1
+  TG_WORKING_DIR: terragrunt/live/website
 
 jobs:
   build:
@@ -37,21 +38,22 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Terragrunt Plan
-      run: terragrunt plan --terragrunt-working-dir terragrunt/live/website/
+      run: terragrunt plan --terragrunt-working-dir $TG_WORKING_DIR
 
     - name: Terragrunt Apply
-      run: terragrunt apply -auto-approve --terragrunt-working-dir terragrunt/live/website/
+      run: terragrunt apply -auto-approve --terragrunt-working-dir $TG_WORKING_DIR
 
     - name: Terragrunt Output
       id: terraform
       run: |
-        printf "distribution_id=%s\n" $(terragrunt output --terragrunt-working-dir terragrunt/live/website/ distribution_id) >> "$GITHUB_OUTPUT"
+        printf "distribution_id=%s\n" $(terragrunt output --terragrunt-working-dir $TG_WORKING_DIR distribution_id) >> "$GITHUB_OUTPUT"
+        printf "bucket_name=%s\n" $(terragrunt output --terragrunt-working-dir $TG_WORKING_DIR bucket_name) >> "$GITHUB_OUTPUT"
 
     - name: Build Jekyll project
       run: bundle exec rake build
 
     - name: Copy output to S3
-      run: aws s3 sync ./_site/ s3://${{ secrets.AWS_S3_BUCKET_NAME }} --acl public-read --delete --cache-control max-age=604800
+      run: aws s3 sync ./_site/ s3://${{ steps.terraform.outputs.bucket_name }} --acl public-read --delete --cache-control max-age=604800
 
     - name: Invalidate Cloudfront
       run: aws cloudfront create-invalidation --distribution-id ${{ steps.terraform.outputs.distribution_id }} --paths "/*"
