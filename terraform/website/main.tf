@@ -41,10 +41,10 @@ resource "aws_s3_bucket_website_configuration" "bucket" {
 }
 
 resource "aws_cloudfront_distribution" "distribution" {
+  aliases         = ["colorcop.net"]
   comment         = "Cloudfront distribution for ${var.hostname}"
   enabled         = true
   is_ipv6_enabled = true
-  aliases         = ["colorcop.net"]
 
   origin {
     domain_name = aws_s3_bucket_website_configuration.bucket.website_endpoint
