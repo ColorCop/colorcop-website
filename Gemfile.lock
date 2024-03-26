@@ -137,9 +137,8 @@ GEM
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
     safe_yaml (1.0.5)
-    sass-embedded (1.72.0)
+    sass-embedded (1.72.0-aarch64-linux-gnu)
       google-protobuf (>= 3.25, < 5.0)
-      rake (>= 13.0.0)
     sass-embedded (1.72.0-aarch64-linux-musl)
       google-protobuf (>= 3.25, < 5.0)
     sass-embedded (1.72.0-arm-linux-gnueabihf)
@@ -191,6 +190,9 @@ DEPENDENCIES
   rake
   rubocop
   rubocop-rake
+
+RUBY VERSION
+   ruby 3.3.0p0
 
 BUNDLED WITH
    2.5.3
