@@ -64,8 +64,8 @@ resource "aws_cloudfront_distribution" "distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate.cert.arn
-    ssl_support_method = "sni-only"
+    acm_certificate_arn      = aws_acm_certificate.cert.arn
+    ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2021"
   }
 
@@ -118,9 +118,9 @@ resource "aws_acm_certificate_validation" "cert_validation" {
 }
 
 resource "aws_route53_record" "www_a" {
-  zone_id = data.aws_route53_zone.main.zone_id
-  name    = var.hostname
-  type    = "A"
+  zone_id         = data.aws_route53_zone.main.zone_id
+  name            = var.hostname
+  type            = "A"
   allow_overwrite = true
 
   alias {
