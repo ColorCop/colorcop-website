@@ -57,7 +57,6 @@ resource "aws_cloudfront_distribution" "distribution" {
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
   }
-
   price_class = "PriceClass_100"
   tags = {
     Environment = var.env
@@ -87,7 +86,8 @@ resource "aws_cloudfront_distribution" "distribution" {
 }
 
 resource "aws_acm_certificate" "cert" {
-  domain_name       = var.domain
+  # using wildcard certificate in order to support www. and other subdomains
+  domain_name       = "*.${var.domain}"
   validation_method = "DNS"
 
   lifecycle {
