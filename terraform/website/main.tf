@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "bucket" {
-  bucket = var.hostname
+  bucket = var.domain
 }
 
 resource "aws_s3_bucket_ownership_controls" "bucket" {
@@ -41,8 +41,8 @@ resource "aws_s3_bucket_website_configuration" "bucket" {
 }
 
 resource "aws_cloudfront_distribution" "distribution" {
-  aliases         = ["colorcop.net"]
-  comment         = "Cloudfront distribution for ${var.hostname}"
+  aliases         = [local.www_domain, var.domain]
+  comment         = "Cloudfront distribution for ${var.domain}"
   enabled         = true
   is_ipv6_enabled = true
 
@@ -87,7 +87,7 @@ resource "aws_cloudfront_distribution" "distribution" {
 }
 
 resource "aws_acm_certificate" "cert" {
-  domain_name       = var.hostname
+  domain_name       = var.domain
   validation_method = "DNS"
 
   lifecycle {
@@ -117,15 +117,3 @@ resource "aws_acm_certificate_validation" "cert_validation" {
   validation_record_fqdns = [for record in aws_route53_record.record : record.fqdn]
 }
 
-resource "aws_route53_record" "www_a" {
-  zone_id         = data.aws_route53_zone.main.zone_id
-  name            = var.hostname
-  type            = "A"
-  allow_overwrite = true
-
-  alias {
-    name                   = aws_cloudfront_distribution.distribution.domain_name
-    zone_id                = aws_cloudfront_distribution.distribution.hosted_zone_id
-    evaluate_target_health = false
-  }
-}
