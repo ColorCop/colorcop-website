@@ -8,5 +8,5 @@ terraform {
 
 inputs = {
   env      = "live"
-  hostname = "colorcop.net"
+  domain = "colorcop.net"
 }

@@ -3,7 +3,7 @@ variable "env" {
   type        = string
 }
 
-variable "hostname" {
-  description = "hostname of the website"
+variable "domain" {
+  description = "the domain name of the website. IE example.com"
   type        = string
 }
