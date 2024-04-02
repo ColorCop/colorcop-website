@@ -14,7 +14,7 @@
 
 ## Running tests
 
-    rake test
+    rake spec
 
 ## Running linters
 

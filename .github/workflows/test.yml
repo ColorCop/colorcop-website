@@ -27,7 +27,7 @@ jobs:
         tflint_version: v0.50.3
 
     - name: Run tests
-      run: bundle exec rake test
+      run: bundle exec rake spec
 
     - name: Run linters
       run: bundle exec rake lint

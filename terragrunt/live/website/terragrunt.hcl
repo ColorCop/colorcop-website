@@ -7,6 +7,6 @@ terraform {
 }
 
 inputs = {
-  env      = "live"
+  env    = "live"
   domain = "colorcop.net"
 }
