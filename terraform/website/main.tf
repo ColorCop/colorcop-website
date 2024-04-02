@@ -86,9 +86,9 @@ resource "aws_cloudfront_distribution" "distribution" {
 }
 
 resource "aws_acm_certificate" "cert" {
-  # using wildcard certificate in order to support www. and other subdomains
-  domain_name       = "*.${var.domain}"
-  validation_method = "DNS"
+  domain_name               = var.domain
+  subject_alternative_names = ["*.${var.domain}"]
+  validation_method         = "DNS"
 
   lifecycle {
     create_before_destroy = true
