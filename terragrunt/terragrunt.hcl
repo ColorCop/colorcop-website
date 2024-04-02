@@ -10,6 +10,12 @@ generate "provider" {
   if_exists = "overwrite_terragrunt"
   contents  = <<EOF
 provider "aws" {
+  # tags for all resources
+  default_tags {
+    tags = {
+      ManagedBy        = "terraform"
+    }
+  }
   region = "us-east-1"
   allowed_account_ids = ["651111921281"]
 }
