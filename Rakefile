@@ -5,7 +5,10 @@ require 'jekyll'
 require 'rubocop/rake_task'
 require 'rspec/core/rake_task'
 
-RuboCop::RakeTask.new
+RuboCop::RakeTask.new do |task|
+  task.requires << 'rubocop-rspec'
+end
+
 RSpec::Core::RakeTask.new(:spec)
 
 desc 'build the Jekyll project'
