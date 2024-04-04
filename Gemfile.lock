@@ -18,12 +18,17 @@ GEM
       fiber-annotation
       fiber-local
       json
+    diff-lcs (1.5.1)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     ethon (0.16.0)
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
+    faraday (2.9.0)
+      faraday-net_http (>= 2.0, < 3.2)
+    faraday-net_http (3.1.0)
+      net-http
     ffi (1.16.3)
     fiber-annotation (0.2.0)
     fiber-local (1.0.0)
@@ -85,6 +90,8 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
+    net-http (0.4.1)
+      uri
     nokogiri (1.16.3-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.16.3-arm-linux)
@@ -119,6 +126,19 @@ GEM
     regexp_parser (2.9.0)
     rexml (3.2.6)
     rouge (4.2.1)
+    rspec (3.13.0)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.0)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.1)
     rubocop (1.62.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -165,6 +185,7 @@ GEM
     typhoeus (1.4.1)
       ethon (>= 0.9.0)
     unicode-display_width (2.5.0)
+    uri (0.13.0)
     webrick (1.8.1)
     yell (2.2.2)
     zeitwerk (2.6.13)
@@ -185,9 +206,11 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  faraday
   html-proofer
   jekyll
   rake
+  rspec (~> 3.4)
   rubocop
   rubocop-rake
 

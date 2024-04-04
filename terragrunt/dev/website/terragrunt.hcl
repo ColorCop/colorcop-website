@@ -7,7 +7,7 @@ terraform {
 }
 
 inputs = {
-  env      = "dev"
+  env    = "dev"
   # FIXME: need new strategy for dev/staging domain
   domain = "dev.colorcop.net"
 }
