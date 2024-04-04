@@ -14,7 +14,7 @@ describe 'colorcop.net' do
     let!(:response) { connection.get '/' }
 
     it 'redirects to https' do
-      expect(response.status).to eq 301
+      expect(response).to have_http_status 301
     end
   end
 end
