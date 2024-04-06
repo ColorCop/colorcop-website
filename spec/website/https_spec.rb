@@ -10,11 +10,25 @@ describe 'colorcop.net' do
     end
   end
 
-  context 'with a http:// requestion' do
+  context 'when protocol is http' do
+    # rubocop: disable RSpec/LetSetup
+    let!(:base_url) { 'http://colorcop.net' }
     let!(:response) { connection.get '/' }
+    # rubocop: enable RSpec/LetSetup
 
-    it 'redirects to https' do
+    it 'returns permanently redirected' do
       expect(response.status).to eq 301
+    end
+  end
+
+  context 'when protocol is https' do
+    # rubocop: disable RSpec/LetSetup
+    let!(:base_url) { 'https://colorcop.net' }
+    let!(:response) { connection.get '/' }
+    # rubocop: enable RSpec/LetSetup
+
+    it 'returns success' do
+      expect(response.status).to eq 200
     end
   end
 end
