@@ -3,3 +3,8 @@
 data "aws_route53_zone" "main" {
   name = var.domain
 }
+
+# reference an AWS managed cloudfront cache policy
+data "aws_cloudfront_cache_policy" "cache-optimized" {
+  name = "Managed-CachingOptimized"
+}
