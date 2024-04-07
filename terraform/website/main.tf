@@ -76,7 +76,7 @@ resource "aws_cloudfront_distribution" "distribution" {
   }
 
   default_cache_behavior {
-    cache_policy_id        = "658327ea-f89d-4fab-a63d-7e88639e58f6"
+    cache_policy_id        = data.aws_cloudfront_cache_policy.cache-optimized.id
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
     allowed_methods        = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
