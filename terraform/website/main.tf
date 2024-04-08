@@ -44,7 +44,9 @@ resource "aws_cloudfront_distribution" "distribution" {
   aliases         = [local.www_domain, var.domain]
   comment         = "Cloudfront distribution for ${var.domain}"
   enabled         = true
+  http_version    = "http2and3"
   is_ipv6_enabled = true
+  price_class     = "PriceClass_100"
 
   origin {
     domain_name = aws_s3_bucket_website_configuration.bucket.website_endpoint
@@ -57,7 +59,6 @@ resource "aws_cloudfront_distribution" "distribution" {
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
   }
-  price_class = "PriceClass_100"
   tags = {
     Environment = var.env
   }
