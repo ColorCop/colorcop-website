@@ -3,13 +3,9 @@
 require 'html-proofer'
 require 'jekyll'
 require 'rubocop/rake_task'
-require 'rspec/core/rake_task'
 
 RuboCop::RakeTask.new do |task|
-  task.requires << 'rubocop-rspec'
 end
-
-RSpec::Core::RakeTask.new(:spec)
 
 desc 'build the Jekyll project'
 task :build do
@@ -17,6 +13,12 @@ task :build do
   site = Jekyll::Site.new(config)
   Jekyll::Commands::Build.build(site, config)
 end
+
+desc 'run playwright tests'
+task :test do
+  sh 'npx playwright test'
+end
+  
 
 desc 'run linters'
 task lint: :build do
@@ -32,4 +34,4 @@ task lint: :build do
   HTMLProofer.check_directory('./_site', options).run
 end
 
-task default: %i[spec lint]
+task default: %i[test lint]

@@ -9,7 +9,5 @@ gem 'faraday'
 gem 'html-proofer'
 gem 'jekyll'
 gem 'rake'
-gem 'rspec', '~> 3.4'
 gem 'rubocop', require: false
 gem 'rubocop-rake'
-gem 'rubocop-rspec'

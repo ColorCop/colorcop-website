@@ -1,0 +1,17 @@
+{
+  "name": "colorcop-website",
+  "version": "1.0.0",
+  "description": "[![GitHub Actions Status](https://github.com/ColorCop/colorcop-website/workflows/Test/badge.svg)](https://github.com/ColorCop/colorcop-website/actions) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.43.0",
+    "@types/node": "^20.12.6"
+  }
+}
