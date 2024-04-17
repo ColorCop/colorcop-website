@@ -7,15 +7,17 @@ sitemap_exclude: y
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% for post in site.posts %}
     <url>
-        <loc>{{site.production_url}}{{ post.url | remove: 'index.html' }}</loc>
+        <loc>{{site.url}}{{ post.url | remove: 'index.html' }}</loc>
+        <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     </url>
     {% endfor %}
 
     {% for page in site.pages %}
-    {% if page.sitemap_exclude != 'y' %}
-    <url>
-        <loc>{{site.production_url}}{{ page.url | remove: 'index.html' }}</loc>
-    </url>
-    {% endif %}
+      {% if page.sitemap_exclude != 'y' %}
+      <url>
+          <loc>{{site.url}}{{ page.url | remove: 'index.html' }}</loc>
+          <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+      </url>
+      {% endif %}
     {% endfor %}
 </urlset>
