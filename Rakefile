@@ -4,8 +4,8 @@ require 'html-proofer'
 require 'jekyll'
 require 'rubocop/rake_task'
 
-RuboCop::RakeTask.new do |task|
-end
+# add the rubocop rake tasks
+RuboCop::RakeTask.new
 
 desc 'build the Jekyll project'
 task :build do
@@ -18,7 +18,6 @@ desc 'run playwright tests'
 task :test do
   sh 'npx playwright test'
 end
-  
 
 desc 'run linters'
 task lint: :build do

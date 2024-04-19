@@ -1,24 +1,34 @@
 # colorcop-website
 
 [![GitHub Actions Status](https://github.com/ColorCop/colorcop-website/workflows/Test/badge.svg)](https://github.com/ColorCop/colorcop-website/actions)
+![Powered by Rake](https://img.shields.io/badge/powered_by-rake-blue?logo=ruby)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 
 ## Installation
 
-    bundle install
+```
+bundle install
+```
 
 ## Running locally
 
-    jekyll serve
+```
+jekyll serve
+```
 
 ## Running tests
 
-    rake spec
+There is a rake task that runs [Playwright](https://github.com/microsoft/playwright) tests.
+
+```
+rake test
+```
 
 ## Running linters
 
-    rake lint
+```
+rake lint
+```
 
 ## Deploy
 
