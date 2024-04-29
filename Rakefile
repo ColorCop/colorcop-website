@@ -4,7 +4,7 @@ require 'html-proofer'
 require 'jekyll'
 require 'rubocop/rake_task'
 
-# add the rubocop rake tasks
+# add the rubocop rake task, which is called by the lint task
 RuboCop::RakeTask.new
 
 desc 'build the Jekyll project'
@@ -21,7 +21,7 @@ end
 
 desc 'run linters'
 task lint: :build do
-  # Ruby lint
+  # Ruby code linter
   Rake::Task['rubocop'].execute
 
   # Terraform lint
