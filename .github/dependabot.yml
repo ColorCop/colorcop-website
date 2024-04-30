@@ -1,11 +1,15 @@
 version: 2
 updates:
+- package-ecosystem: bundler
+  directory: /
+  schedule:
+    interval: weekly
 - package-ecosystem: github-actions
   # maintain workflows in the default location (/.github/workflows/)
   directory: /
   schedule:
     interval: weekly
-- package-ecosystem: bundler
+- package-ecosystem: npm
   directory: /
   schedule:
     interval: weekly
