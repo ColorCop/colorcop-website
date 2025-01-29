@@ -6,6 +6,10 @@
 
 ## Installation
 
+This project uses mise to configure the development environment.  Install it and then run `mise install`.
+
+Install the required ruby gems:
+
 ```
 bundle install
 ```
