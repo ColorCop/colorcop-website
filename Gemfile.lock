@@ -20,18 +20,18 @@ GEM
       fiber-annotation
       fiber-local (~> 1.1)
       json
-    csv (3.3.4)
+    csv (3.3.5)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     ethon (0.16.0)
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
-    faraday (2.13.0)
+    faraday (2.14.0)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
-    faraday-net_http (3.4.0)
+    faraday-net_http (3.4.1)
       net-http (>= 0.5.0)
     ffi (1.17.1-aarch64-linux-gnu)
     ffi (1.17.1-aarch64-linux-musl)
