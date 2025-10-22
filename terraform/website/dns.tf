@@ -1,3 +1,13 @@
+
+# TXT record for domain verification with Microsoft
+resource "aws_route53_record" "txt_record" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name    = "@"
+  type    = "TXT"
+  ttl     = 3600
+  records = ["MS=ms21173179"]
+}
+
 # main A record alias to the Cloudfront hostname
 resource "aws_route53_record" "www_a" {
   zone_id         = data.aws_route53_zone.main.zone_id
