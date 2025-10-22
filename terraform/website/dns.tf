@@ -5,6 +5,7 @@ resource "aws_route53_record" "mx_verification" {
   type    = "MX"
   ttl     = 3600
   records = ["10 ms21173179.msv1.invalid"]
+}
 
 # domain verification with Microsoft
 resource "aws_route53_record" "txt_record" {
