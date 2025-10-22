@@ -1,3 +1,11 @@
+resource "aws_route53_record" "mx_verification" {
+  zone_id = data.aws_route53_zone.main.zone_id
+  name    = "@"
+  type    = "MX"
+  ttl     = 3600
+  records = ["10 ms21173179.msv1.invalid"]
+}
+
 # main A record alias to the Cloudfront hostname
 resource "aws_route53_record" "www_a" {
   zone_id         = data.aws_route53_zone.main.zone_id
