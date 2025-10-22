@@ -40,6 +40,11 @@ jobs:
         terragrunt-version: 0.55.18
         token: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Upgrade Provider
+      run: |
+        echo "Upgrading AWS provider..."
+        terragrunt init --terragrunt-working-dir $TG_WORKING_DIR --upgrade
+
     - name: Terragrunt Plan
       run: terragrunt plan --terragrunt-working-dir $TG_WORKING_DIR
 
