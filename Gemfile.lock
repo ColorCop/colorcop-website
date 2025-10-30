@@ -239,7 +239,7 @@ DEPENDENCIES
   rubocop-rake
 
 RUBY VERSION
-   ruby 3.3.1p55
+   ruby 3.3.9p170
 
 BUNDLED WITH
    2.5.3
