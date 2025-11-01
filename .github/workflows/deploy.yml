@@ -31,13 +31,13 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3.1.2
       with:
-        terraform_version: 1.5.7
+        terraform_version: 1.13.4
         terraform_wrapper: true
 
     - name: Setup Terragrunt
       uses: autero1/action-terragrunt@v3.0.2
       with:
-        terragrunt-version: 0.55.18
+        terragrunt-version: 0.86.0
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upgrade Provider
