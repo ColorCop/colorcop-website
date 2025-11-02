@@ -3,7 +3,6 @@ name: Deploy
 on:
   push:
     branches: [ main, master ]
-
   workflow_dispatch:
 
 env:
@@ -12,7 +11,6 @@ env:
   AWS_DEFAULT_REGION: us-east-1
   TG_WORKING_DIR: terragrunt/live/website
 
-# configure concurrency to prevent multiple runs at the same time
 concurrency:
   group: ${{ github.workflow }}
 
@@ -43,19 +41,19 @@ jobs:
     - name: Upgrade Provider
       run: |
         echo "Upgrading AWS provider..."
-        terragrunt init --terragrunt-working-dir $TG_WORKING_DIR --upgrade
+        terragrunt init --chdir $TG_WORKING_DIR --upgrade
 
     - name: Terragrunt Plan
-      run: terragrunt plan --terragrunt-working-dir $TG_WORKING_DIR
+      run: terragrunt plan --chdir $TG_WORKING_DIR
 
     - name: Terragrunt Apply
-      run: terragrunt apply -auto-approve --terragrunt-working-dir $TG_WORKING_DIR
+      run: terragrunt apply -auto-approve --chdir $TG_WORKING_DIR
 
     - name: Terragrunt Output
       id: terraform
       run: |
-        printf "distribution_id=%s\n" $(terragrunt output --terragrunt-working-dir $TG_WORKING_DIR distribution_id) >> "$GITHUB_OUTPUT"
-        printf "bucket_name=%s\n" $(terragrunt output --terragrunt-working-dir $TG_WORKING_DIR bucket_name) >> "$GITHUB_OUTPUT"
+        printf "distribution_id=%s\n" $(terragrunt output --chdir $TG_WORKING_DIR distribution_id) >> "$GITHUB_OUTPUT"
+        printf "bucket_name=%s\n" $(terragrunt output --chdir $TG_WORKING_DIR bucket_name) >> "$GITHUB_OUTPUT"
 
     - name: Build Jekyll project
       run: bundle exec rake build
@@ -65,4 +63,3 @@ jobs:
 
     - name: Invalidate Cloudfront
       run: aws cloudfront create-invalidation --distribution-id ${{ steps.terraform.outputs.distribution_id }} --paths "/*"
-
