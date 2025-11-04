@@ -38,10 +38,10 @@ jobs:
         terragrunt-version: 0.86.0
         token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Upgrade Provider
+    - name: Update Terraform State and Providers
       run: |
-        echo "Upgrading AWS provider..."
-        terragrunt init --chdir $TG_WORKING_DIR --upgrade
+        cd "$TG_WORKING_DIR"
+        terragrunt init --upgrade
 
     - name: Terragrunt Plan
       run: terragrunt plan --chdir $TG_WORKING_DIR
