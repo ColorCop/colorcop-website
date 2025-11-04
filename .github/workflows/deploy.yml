@@ -2,64 +2,77 @@ name: Deploy
 
 on:
   push:
-    branches: [ main, master ]
+    branches:
+      - main
+      # branches that match deploy-* will deploy as well
+      - deploy-*
   workflow_dispatch:
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: us-east-1
-  TG_WORKING_DIR: terragrunt/live/website
+  working_dir: terragrunt/live/website
 
 concurrency:
   group: ${{ github.workflow }}
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v5
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
-
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v3.1.2
-      with:
-        terraform_version: 1.13.4
-        terraform_wrapper: true
-
-    - name: Setup Terragrunt
-      uses: autero1/action-terragrunt@v3.0.2
-      with:
-        terragrunt-version: 0.86.0
-        token: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Update Terraform State and Providers
-      run: |
-        cd "$TG_WORKING_DIR"
-        terragrunt init --upgrade
+      uses: gruntwork-io/terragrunt-action@v3
+      # env:
+      #   TF_LOG: DEBUG
+      #   INPUT_PRE_EXEC_1: |
+      #     echo "Current directory: $(pwd)"
+      #     ls -la
+      #     git status
+      with:
+        tg_dir: ${{ env.working_dir }}
+        tg_command: init --upgrade
 
     - name: Terragrunt Plan
-      run: terragrunt plan --chdir $TG_WORKING_DIR
+      uses: gruntwork-io/terragrunt-action@v3
+      with:
+        tg_dir: ${{ env.working_dir }}
+        tg_command: plan
 
     - name: Terragrunt Apply
-      run: terragrunt apply -auto-approve --chdir $TG_WORKING_DIR
+      uses: gruntwork-io/terragrunt-action@v3
+      with:
+        tg_dir: ${{ env.working_dir }}
+        tg_command: apply
 
-    - name: Terragrunt Output
-      id: terraform
+    # - name: Terragrunt Output
+    #   uses: gruntwork-io/terragrunt-action@v3
+    #   env:
+    #     TG_TF_FORWARD_STDOUT: 1
+    #     TG_NO_COLOR: 1
+    #   with:
+    #     tg_dir: ${{ env.working_dir }}
+    #     tg_command: output
+
+    - name: Read Values
+      id: terragrunt_output
       run: |
-        printf "distribution_id=%s\n" $(terragrunt output --chdir $TG_WORKING_DIR distribution_id) >> "$GITHUB_OUTPUT"
-        printf "bucket_name=%s\n" $(terragrunt output --chdir $TG_WORKING_DIR bucket_name) >> "$GITHUB_OUTPUT"
+        cd terragrunt/live/website
+        printf "distribution_id=%s\n" $(terragrunt output distribution_id) >> "$GITHUB_OUTPUT"
+        printf "bucket_name=%s\n" $(terragrunt output bucket_name) >> "$GITHUB_OUTPUT"
 
     - name: Build Jekyll project
-      run: bundle exec rake build
+      run: |
+        bundle install
+        bundle exec rake build
+
+    # TODO: fail workflow if bucket name or distribution_id is not found
 
     - name: Copy output to S3
-      run: aws s3 sync ./_site/ s3://${{ steps.terraform.outputs.bucket_name }} --acl public-read --delete --cache-control max-age=604800
+      run: aws s3 sync ./_site/ s3://${{ steps.terragrunt_output.outputs.bucket_name }} --acl public-read --delete --cache-control max-age=604800
 
     - name: Invalidate Cloudfront
-      run: aws cloudfront create-invalidation --distribution-id ${{ steps.terraform.outputs.distribution_id }} --paths "/*"
+      run: aws cloudfront create-invalidation --distribution-id ${{ steps.terragrunt_output.outputs.distribution_id }} --paths "/*"
