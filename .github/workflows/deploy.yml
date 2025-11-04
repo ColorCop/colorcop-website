@@ -44,6 +44,7 @@ jobs:
     - name: Update Terraform State and Providers
       run: |
         cd "$TG_WORKING_DIR"
+        ls -la
         terragrunt init --upgrade
 
     - name: Terragrunt Plan
