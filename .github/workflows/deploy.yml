@@ -27,19 +27,19 @@ jobs:
     - name: Update Terraform State and Providers
       uses: gruntwork-io/terragrunt-action@v3
       with:
-        tg_dir: ${{ github.workspace }}/terragrunt/live/website
+        tg_dir: terragrunt/live/website
         tg_command: init --upgrade
 
     - name: Terragrunt Plan
       uses: gruntwork-io/terragrunt-action@v3
       with:
-        tg_dir: ${{ github.workspace }}/terragrunt/live/website
+        tg_dir: terragrunt/live/website
         tg_command: plan
 
     - name: Terragrunt Apply
       uses: gruntwork-io/terragrunt-action@v3
       with:
-        tg_dir: ${{ github.workspace }}/terragrunt/live/website
+        tg_dir: terragrunt/live/website
         tg_command: apply -auto-approve
 
     - name: Terragrunt Output
