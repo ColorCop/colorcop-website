@@ -51,6 +51,9 @@ jobs:
     - name: Terragrunt Output
       uses: gruntwork-io/terragrunt-action@v3
       id: terragrunt_output
+      env:
+        TERRAGRUNT_FORWARD_TF_STDOUT: 1
+        TERRAGRUNT_NO_COLOR: 1
       with:
         tg_dir: ${{ env.working_dir }}
         tg_command: output
@@ -61,7 +64,6 @@ jobs:
         bundle exec rake build
 
     # TODO: fail workflow if bucket name or distribution_id is not found
-
 
     - name: Copy output to S3
       run: aws s3 sync ./_site/ s3://${{ steps.terragrunt_step.outputs.bucket_name }} --acl public-read --delete --cache-control max-age=604800
