@@ -24,14 +24,11 @@ jobs:
     steps:
     - uses: actions/checkout@v5
 
-    - name: Install Terragrunt and OpenTofu
-      uses: gruntwork-io/terragrunt-action@v3
-
     - name: Update Terraform State and Providers
-      run: |
-        cd "$TG_WORKING_DIR"
-        ls -la
-        terragrunt init --upgrade
+      uses: gruntwork-io/terragrunt-action@v3
+      with:
+        tg_dir: "$TG_WORKING_DIR"
+        tg_command: init --upgrade
 
     - name: Terragrunt Plan
       run: terragrunt plan --chdir $TG_WORKING_DIR
