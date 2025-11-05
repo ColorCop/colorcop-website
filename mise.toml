@@ -1,4 +1,4 @@
 [tools]
 ruby = '3.3.9'
-terragrunt = "0.86.0"
-opentofu = "1.10.1"
+terragrunt = "0.55.18""
+terraform = "1.5.7"
