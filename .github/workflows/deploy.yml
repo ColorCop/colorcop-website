@@ -58,6 +58,11 @@ jobs:
         tg_dir: ${{ env.working_dir }}
         tg_command: output
 
+    - name: Read Values
+      run: |
+        echo "Bucket Name: ${{ steps.terragrunt_step.outputs.bucket_name }}"
+        echo "Distribution ID: ${{ steps.terragrunt_step.outputs.distribution_id }}
+
     - name: Build Jekyll project
       run: |
         bundle install
