@@ -12,10 +12,12 @@ env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   AWS_DEFAULT_REGION: us-east-1
-  TG_WORKING_DIR: terragrunt/live/website
+  working_dir: terragrunt/live/website
 
 concurrency:
   group: ${{ github.workflow }}
+
+
 
 jobs:
   deploy:
@@ -33,19 +35,19 @@ jobs:
           ls -la
           git status
       with:
-        tg_dir: ./terragrunt/live/website
+        tg_dir: ${{ env.working_dir }}
         tg_command: init --upgrade
 
     - name: Terragrunt Plan
       uses: gruntwork-io/terragrunt-action@v3
       with:
-        tg_dir: ./terragrunt/live/website
+        tg_dir: ${{ env.working_dir }}
         tg_command: plan
 
     - name: Terragrunt Apply
       uses: gruntwork-io/terragrunt-action@v3
       with:
-        tg_dir: ./terragrunt/live/website
+        tg_dir: ${{ env.working_dir }}
         tg_command: apply -auto-approve
 
     - name: Terragrunt Output
