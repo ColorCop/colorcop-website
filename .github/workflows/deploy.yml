@@ -24,16 +24,8 @@ jobs:
     steps:
     - uses: actions/checkout@v5
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
-
     - name: Install Terragrunt and OpenTofu
       uses: gruntwork-io/terragrunt-action@v3
-      with:
-        tg_version: '0.55.18'
-        tofu_version: '1.6.2'
 
     - name: Update Terraform State and Providers
       run: |
