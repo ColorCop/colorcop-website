@@ -48,6 +48,15 @@ jobs:
         tg_dir: ${{ env.working_dir }}
         tg_command: apply
 
+    - name: Terragrunt Outputs
+      uses: gruntwork-io/terragrunt-action@v3
+      id: terragrunt_outputs
+      with:
+        tg_dir: ${{ env.working_dir }}
+        tg_command: output distribution_id bucket_name
+
+
+
     # - name: Get bucket name
     #   uses: gruntwork-io/terragrunt-action@v3
     #   id: get_bucket_name
@@ -68,8 +77,8 @@ jobs:
     #     printf "distribution_id=%s\n" $(terragrunt output --chdir $TG_WORKING_DIR distribution_id) >> "$GITHUB_OUTPUT"
     #     printf "bucket_name=%s\n" $(terragrunt output --chdir $TG_WORKING_DIR bucket_name) >> "$GITHUB_OUTPUT"
 
-    # - name: Build Jekyll project
-    #   run: bundle exec rake build
+    - name: Build Jekyll project
+      run: bundle exec rake build
 
     # - name: Copy output to S3
     #   run: aws s3 sync ./_site/ s3://${{ steps.get_bucket_name.outputs.tg_action_output }} --acl public-read --delete --cache-control max-age=604800
