@@ -48,14 +48,12 @@ jobs:
         tg_dir: ${{ env.working_dir }}
         tg_command: apply
 
-    - name: Terragrunt Outputs
+    - name: Terragrunt Output
       uses: gruntwork-io/terragrunt-action@v3
       id: terragrunt_outputs
       with:
         tg_dir: ${{ env.working_dir }}
-        tg_command: output distribution_id bucket_name
-
-
+        tg_command: output
 
     # - name: Get bucket name
     #   uses: gruntwork-io/terragrunt-action@v3
@@ -80,8 +78,8 @@ jobs:
     - name: Build Jekyll project
       run: bundle exec rake build
 
-    # - name: Copy output to S3
-    #   run: aws s3 sync ./_site/ s3://${{ steps.get_bucket_name.outputs.tg_action_output }} --acl public-read --delete --cache-control max-age=604800
+    - name: Copy output to S3
+      run: aws s3 sync ./_site/ s3://${{ steps.terragrunt_outputs.outputs.tg_action_output }} --acl public-read --delete --cache-control max-age=604800
 
     # - name: Invalidate Cloudfront
     #   run: aws cloudfront create-invalidation --distribution-id ${{  steps.get_distribution_id.outputs.tg_action_output }} --paths "/*"
