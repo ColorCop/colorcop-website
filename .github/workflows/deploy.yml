@@ -60,6 +60,7 @@ jobs:
 
     - name: Read Values
       run: |
+        cd terragrunt/live/website
         terragrunt output bucket_name
         echo "Distribution ID: ${{ steps.terragrunt_step.outputs.distribution_id }}
 
