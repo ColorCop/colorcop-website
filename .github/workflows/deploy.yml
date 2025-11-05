@@ -29,16 +29,6 @@ jobs:
       with:
         bundler-cache: true
 
-    steps:
-    - uses: actions/checkout@v5
-      with:
-        submodules: true
-
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
-
     - name: Install Terragrunt and OpenTofu
       uses: gruntwork-io/terragrunt-action@v3
       with:
