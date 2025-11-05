@@ -32,8 +32,8 @@ jobs:
     - name: Install Terragrunt and OpenTofu
       uses: gruntwork-io/terragrunt-action@v3
       with:
-        terraform_version: '1.13.4'
-        terragrunt_version: '0.86.0'
+        tg_version: '0.55.18'
+        tofu_version: '1.6.2'
 
     - name: Update Terraform State and Providers
       run: |
