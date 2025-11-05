@@ -26,12 +26,12 @@ jobs:
 
     - name: Update Terraform State and Providers
       uses: gruntwork-io/terragrunt-action@v3
-      env:
-        TF_LOG: DEBUG
-        INPUT_PRE_EXEC_1: |
-          echo "Current directory: $(pwd)"
-          ls -la
-          git status
+      # env:
+      #   TF_LOG: DEBUG
+      #   INPUT_PRE_EXEC_1: |
+      #     echo "Current directory: $(pwd)"
+      #     ls -la
+      #     git status
       with:
         tg_dir: ${{ env.working_dir }}
         tg_command: init --upgrade
