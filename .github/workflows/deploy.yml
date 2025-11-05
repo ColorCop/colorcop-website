@@ -52,8 +52,8 @@ jobs:
       uses: gruntwork-io/terragrunt-action@v3
       id: terragrunt_output
       env:
-        TERRAGRUNT_FORWARD_TF_STDOUT: 1
-        TERRAGRUNT_NO_COLOR: 1
+        TG_TF_FORWARD_STDOUT: 1
+        TG_NO_COLOR: 1
       with:
         tg_dir: ${{ env.working_dir }}
         tg_command: output
