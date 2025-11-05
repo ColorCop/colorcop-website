@@ -50,17 +50,31 @@ jobs:
         tg_dir: ${{ env.working_dir }}
         tg_command: apply -auto-approve
 
-    - name: Terragrunt Output
-      id: terraform
-      run: |
-        printf "distribution_id=%s\n" $(terragrunt output --chdir $TG_WORKING_DIR distribution_id) >> "$GITHUB_OUTPUT"
-        printf "bucket_name=%s\n" $(terragrunt output --chdir $TG_WORKING_DIR bucket_name) >> "$GITHUB_OUTPUT"
+    - name: Get bucket name
+      uses: gruntwork-io/terragrunt-action@v3
+      id: get_bucket_name
+      with:
+        tg_dir: ${{ env.TG_WORKING_DIR }}
+        tg_command: 'output bucket_name'
+
+    - name: Get distribution id
+      uses: gruntwork-io/terragrunt-action@v3
+      id: get_distribution_id
+      with:
+        tg_dir: ${{ env.TG_WORKING_DIR }}
+        tg_command: 'output distribution_id'
+
+    # - name: Terragrunt Output
+    #   id: terraform
+    #   run: |
+    #     printf "distribution_id=%s\n" $(terragrunt output --chdir $TG_WORKING_DIR distribution_id) >> "$GITHUB_OUTPUT"
+    #     printf "bucket_name=%s\n" $(terragrunt output --chdir $TG_WORKING_DIR bucket_name) >> "$GITHUB_OUTPUT"
 
     - name: Build Jekyll project
       run: bundle exec rake build
 
     - name: Copy output to S3
-      run: aws s3 sync ./_site/ s3://${{ steps.terraform.outputs.bucket_name }} --acl public-read --delete --cache-control max-age=604800
+      run: aws s3 sync ./_site/ s3://${{ steps.get_bucket_name.outputs.tg_action_output }} --acl public-read --delete --cache-control max-age=604800
 
     - name: Invalidate Cloudfront
-      run: aws cloudfront create-invalidation --distribution-id ${{ steps.terraform.outputs.distribution_id }} --paths "/*"
+      run: aws cloudfront create-invalidation --distribution-id ${{  steps.get_distribution_id.outputs.tg_action_output }} --paths "/*"
