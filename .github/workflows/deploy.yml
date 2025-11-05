@@ -27,11 +27,14 @@ jobs:
     - name: Update Terraform State and Providers
       uses: gruntwork-io/terragrunt-action@v3
       with:
-        tg_dir: "${TG_WORKING_DIR}"
+        tg_dir: $TG_WORKING_DIR
         tg_command: init --upgrade
 
     - name: Terragrunt Plan
-      run: terragrunt plan --chdir $TG_WORKING_DIR
+      uses: gruntwork-io/terragrunt-action@v3
+      with:
+        tg_dir: $TG_WORKING_DIR
+        tg_command: plan
 
     - name: Terragrunt Apply
       run: terragrunt apply -auto-approve --chdir $TG_WORKING_DIR
