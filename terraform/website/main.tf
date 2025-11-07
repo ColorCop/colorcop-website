@@ -28,6 +28,7 @@ resource "aws_s3_bucket_acl" "bucket" {
   acl    = "public-read"
 }
 
+# Configure website settings
 resource "aws_s3_bucket_website_configuration" "bucket" {
   bucket = aws_s3_bucket.bucket.id
 
@@ -40,23 +41,25 @@ resource "aws_s3_bucket_website_configuration" "bucket" {
   }
 
   routing_rules = jsonencode([
-  {
-    Condition {
-      KeyPrefixEquals = "colorcop/download"
+    {
+      Condition = {
+        KeyPrefixEquals = "colorcop/download"
+      }
+      Redirect = {
+        ReplaceKeyWith = "download"
+        HostName = var.domain
+      }
+    },
+    {
+      Condition = {
+        KeyPrefixEquals = "colorcop/features"
+      }
+      Redirect = {
+        ReplaceKeyWith = "features"
+        HostName = var.domain
+      }
     }
-    Redirect {
-      ReplaceKeyWith = "download"
-    }
-  },
-  {
-    Condition {
-      KeyPrefixEquals = "colorcop/features"
-    }
-    Redirect {
-      ReplaceKeyWith = "features"
-    }
-  }
-])
+  ])
 }
 
 resource "aws_cloudfront_distribution" "distribution" {
