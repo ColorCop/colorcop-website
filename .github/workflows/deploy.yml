@@ -70,15 +70,11 @@ jobs:
         bundle exec rake build
 
     - name: Validate Outputs
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const bucketName = steps.terragrunt_output.outputs.bucket_name;
-          const distributionId = steps.terragrunt_output.outputs.distribution_id;
-
-          if (!bucketName || !distributionId) {
-            core.setFailed('Required outputs not found');
-          }
+      run: |
+        echo "Verifying CloudFront Distribution..."
+        aws cloudfront get-distribution --id "${{ steps.terragrunt_output.outputs.distribution_id }}"
+        echo "\nVerifying S3 Bucket..."
+        aws s3 ls | grep "${{ steps.terragrunt_output.outputs.bucket_name }}"
 
     - name: Copy output to S3
       run: aws s3 sync ./_site/ s3://${{ steps.terragrunt_output.outputs.bucket_name }} --acl public-read --delete --cache-control max-age=604800
