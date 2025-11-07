@@ -38,6 +38,25 @@ resource "aws_s3_bucket_website_configuration" "bucket" {
   error_document {
     key = "error.html"
   }
+
+  routing_rules = jsonencode([
+  {
+    Condition {
+      KeyPrefixEquals = "colorcop/download"
+    }
+    Redirect {
+      ReplaceKeyWith = "download"
+    }
+  },
+  {
+    Condition {
+      KeyPrefixEquals = "colorcop/features"
+    }
+    Redirect {
+      ReplaceKeyWith = "features"
+    }
+  }
+])
 }
 
 resource "aws_cloudfront_distribution" "distribution" {
