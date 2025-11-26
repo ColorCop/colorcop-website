@@ -12,4 +12,14 @@ github_username: colorcop
 markdown: kramdown
 
 # exclude some directories and files that don't belong in the website
-exclude: [terraform, terragrunt, Rakefile, README.md, package*, playwright*]
+exclude:
+  - terraform
+  - terragrunt
+  - Rakefile
+  - README.md
+  - package*
+  - playwright*
+  - "*.toml"
+  - tests
+  - node_modules
+  - vendor
