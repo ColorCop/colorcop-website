@@ -7,24 +7,20 @@ resource "aws_route53_record" "mx_verification" {
   records = ["10 ms21173179.msv1.invalid"]
 }
 
-# domain verification with Microsoft
-resource "aws_route53_record" "txt_record_microsoft" {
+
+resource "aws_route53_record" "txt_records_root" {
   zone_id = data.aws_route53_zone.main.zone_id
   name    = var.domain
   type    = "TXT"
   ttl     = 3600
-  records = ["MS=ms21173179"]
-}
 
-# domain verification with GitHub
-resource "aws_route53_record" "txt_record_github" {
-  zone_id = data.aws_route53_zone.main.zone_id
-  name    = "_gh-ColorCop-o.colorcop.net"
-  type    = "TXT"
-  ttl     = 3600
-  records = ["938b88b3a4"]
+  records = [
+    # microsoft domain verification
+    "MS=ms21173179",
+    # github
+    "938b88b3a4"
+  ]
 }
-
 
 # main A record alias to the Cloudfront hostname
 resource "aws_route53_record" "www_a" {
