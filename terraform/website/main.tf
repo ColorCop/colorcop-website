@@ -2,6 +2,17 @@ resource "aws_s3_bucket" "bucket" {
   bucket = var.domain
 }
 
+resource "aws_s3_bucket_logging" "bucket_logging" {
+  bucket = aws_s3_bucket.bucket.id
+
+  target_bucket = aws_s3_bucket.logs.id
+  target_prefix = "s3-access-logs/"
+}
+
+resource "aws_s3_bucket" "logs" {
+  bucket = "${var.domain}-logs"
+}
+
 resource "aws_s3_bucket_ownership_controls" "bucket" {
   bucket = aws_s3_bucket.bucket.id
   rule {
@@ -69,6 +80,13 @@ resource "aws_cloudfront_distribution" "distribution" {
   http_version    = "http2and3"
   is_ipv6_enabled = true
   price_class     = "PriceClass_100"
+
+  logging_config {
+    include_cookies = false
+    bucket          = "${aws_s3_bucket.logs.bucket_regional_domain_name}"
+    prefix          = "cloudfront/"
+  }
+
 
   origin {
     domain_name = aws_s3_bucket_website_configuration.bucket.website_endpoint
