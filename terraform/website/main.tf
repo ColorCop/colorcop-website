@@ -13,6 +13,15 @@ resource "aws_s3_bucket" "logs" {
   bucket = "${var.domain}-logs"
 }
 
+# Enable ACLs on the log bucket so CloudFront can write access logs
+resource "aws_s3_bucket_ownership_controls" "logs" {
+  bucket = aws_s3_bucket.logs.id
+
+  rule {
+    object_ownership = "ObjectWriter"
+  }
+}
+
 resource "aws_s3_bucket_ownership_controls" "bucket" {
   bucket = aws_s3_bucket.bucket.id
   rule {
@@ -37,6 +46,14 @@ resource "aws_s3_bucket_acl" "bucket" {
 
   bucket = aws_s3_bucket.bucket.id
   acl    = "public-read"
+}
+
+# Grant CloudFront permission to write access logs to this bucket
+resource "aws_s3_bucket_acl" "logs" {
+  depends_on = [aws_s3_bucket_ownership_controls.logs]
+
+  bucket = aws_s3_bucket.logs.id
+  acl    = "log-delivery-write"
 }
 
 # Configure website settings
@@ -83,7 +100,7 @@ resource "aws_cloudfront_distribution" "distribution" {
 
   logging_config {
     include_cookies = false
-    bucket          = "${aws_s3_bucket.logs.bucket_regional_domain_name}"
+    bucket          = aws_s3_bucket.logs.bucket_regional_domain_name
     prefix          = "cloudfront/"
   }
 
