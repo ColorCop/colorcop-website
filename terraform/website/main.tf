@@ -90,17 +90,6 @@ resource "aws_s3_bucket_website_configuration" "bucket" {
   ])
 }
 
-resource "aws_cloudfront_response_headers_policy" "csp" {
-  name = "colorcop-csp-policy"
-
-  security_headers_config {
-    content_security_policy {
-      override = true
-      content_security_policy = "default-src 'self'; script-src 'self' 'unsafe-eval' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net;"
-    }
-  }
-}
-
 resource "aws_cloudfront_distribution" "distribution" {
   aliases         = [local.www_domain, var.domain]
   comment         = "Cloudfront distribution for ${var.domain}"
