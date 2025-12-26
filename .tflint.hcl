@@ -2,9 +2,9 @@ config {
     disabled_by_default = false
     format = "compact"
     force = false
-    module = true
+    call_module_type = "all"
 }
- 
+
 plugin "aws" {
     enabled = true
     source = "github.com/terraform-linters/tflint-ruleset-aws"
