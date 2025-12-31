@@ -1,54 +1,49 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
-sitemap_exclude: y
+sitemap_exclude: true
 ---
+
 @charset "utf-8";
-@use 'sass:color';
+@use "sass:color";
 
-
-
-// Our variables
+// Variables
 $base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$small-font-size:  $base-font-size * 0.875;
+$base-font-size: 16px;
+$small-font-size: $base-font-size * 0.875;
 $base-line-height: 1.5;
 
-$spacing-unit:     30px;
+$spacing-unit: 30px;
 
-$text-color:       #111;
+$text-color: #111;
 $background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+$brand-color: #2a7ae2;
 
-$grey-color:       #828282;
+$grey-color: #828282;
 $grey-color-light: color.scale($grey-color, $lightness: 40%);
-$grey-color-dark:  color.scale($grey-color, $lightness: -25%);
+$grey-color-dark: color.scale($grey-color, $lightness: -25%);
 
 // Width of the content area
-$content-width:    800px;
+$content-width: 800px;
 
-$on-palm:          600px;
-$on-laptop:        800px;
+$on-palm: 600px;
+$on-laptop: 800px;
 
-
-
-// Using media queries with like this:
+// Media query mixin
+// Usage:
 // @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: calc($spacing-unit / 2);
-//         padding-left: calc($spacing-unit / 2);
-//     }
+//   .wrapper {
+//     padding-right: $spacing-unit / 2;
+//     padding-left: $spacing-unit / 2;
+//   }
 // }
 @mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
-    }
+  @media screen and (max-width: $device) {
+    @content;
+  }
 }
-
-
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-        "base",
-        "layout",
-        "syntax-highlighting"
-;
+  "base",
+  "layout",
+  "syntax-highlighting";
