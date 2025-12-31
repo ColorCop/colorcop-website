@@ -14,6 +14,18 @@ task :build do
   Jekyll::Commands::Build.build(site, config)
 end
 
+desc 'serve the Jekyll project with live reload'
+task :serve do
+  config = Jekyll.configuration(
+    'watch' => true,
+    'serving' => true,
+    'port' => 4000,
+    'host' => '127.0.0.1'
+  )
+
+  Jekyll::Commands::Serve.process(config)
+end
+
 desc 'run playwright tests'
 task :test do
   sh 'npx playwright test'
