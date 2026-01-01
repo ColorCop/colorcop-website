@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Jekyll",
+      "type": "shell",
+      "command": "mise exec -- bundle exec jekyll serve",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}
