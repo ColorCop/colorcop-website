@@ -3,47 +3,12 @@
 sitemap_exclude: true
 ---
 
+
 @charset "utf-8";
 @use "sass:color";
+@use "variables" as *;
+@use "mixins" as *;
+@use "base" as *;
+@use "layout" as *;
+@use "syntax-highlighting" as *;
 
-// Variables
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size: 16px;
-$small-font-size: $base-font-size * 0.875;
-$base-line-height: 1.5;
-
-$spacing-unit: 30px;
-
-$text-color: #111;
-$background-color: #fdfdfd;
-$brand-color: #2a7ae2;
-
-$grey-color: #828282;
-$grey-color-light: color.scale($grey-color, $lightness: 40%);
-$grey-color-dark: color.scale($grey-color, $lightness: -25%);
-
-// Width of the content area
-$content-width: 800px;
-
-$on-palm: 600px;
-$on-laptop: 800px;
-
-// Media query mixin
-// Usage:
-// @include media-query($on-palm) {
-//   .wrapper {
-//     padding-right: $spacing-unit / 2;
-//     padding-left: $spacing-unit / 2;
-//   }
-// }
-@mixin media-query($device) {
-  @media screen and (max-width: $device) {
-    @content;
-  }
-}
-
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-  "base",
-  "layout",
-  "syntax-highlighting";
