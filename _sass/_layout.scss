@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 /**
  * Site header
  */
@@ -111,7 +114,7 @@
     font-size: 15px;
     color: $grey-color;
     margin-left: calc($spacing-unit / 2);
-    @extend %clearfix;
+    @extend %clearfix !optional;
 }
 
 .footer-col {
