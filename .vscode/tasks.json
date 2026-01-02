@@ -4,20 +4,22 @@
     {
       "label": "Serve",
       "type": "shell",
-      "command": "mise exec -- bundle exec jekyll serve --livereload",
+      "command": "mise exec -- bundle exec jekyll serve --livereload --verbose",
       "group": {
         "kind": "test",
         "isDefault": true
       },
+      "detail": "Run Jekyll in verbose debug mode with livereload",
       "isBackground": true,
       "problemMatcher": ["$jekyll-error-watch", "$jekyll-warning-watch"]
     },
     {
       "label": "Build",
       "type": "shell",
-      "command": "mise exec -- bundle exec jekyll build",
+      "command": "mise exec -- bundle exec jekyll build --verbose",
       "group": "build",
-      "problemMatcher": ["$jekyll-error", "$jekyll-warning"],
+      "detail": "Build Jekyll site with verbose debug output",
+      "problemMatcher": ["$jekyll-error", "$jekyll-warning"]
     }
   ]
 }
