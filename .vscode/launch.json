@@ -3,11 +3,11 @@
   "configurations": [
     {
       "name": "Debug Jekyll",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "url": "http://127.0.0.1:4000",
       "webRoot": "${workspaceFolder}",
-      "preLaunchTask": "Run Jekyll"
+      "preLaunchTask": "Serve"
     }
   ]
 }
