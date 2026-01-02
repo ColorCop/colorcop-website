@@ -2,11 +2,22 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Jekyll",
+      "label": "Serve",
       "type": "shell",
-      "command": "mise exec -- bundle exec jekyll serve",
+      "command": "mise exec -- bundle exec jekyll serve --livereload",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
       "isBackground": true,
-      "problemMatcher": []
+      "problemMatcher": ["$jekyll-error-watch", "$jekyll-warning-watch"]
+    },
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "mise exec -- bundle exec jekyll build",
+      "group": "build",
+      "problemMatcher": ["$jekyll-error", "$jekyll-warning"],
     }
   ]
 }
