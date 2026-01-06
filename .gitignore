@@ -6,6 +6,11 @@ _site/
 *.tfstate
 *.tfstate.backup
 
+# generated files:
+terragrunt/backend.tf
+terragrunt/provider.tf
+
+
 # Terragrunt
 .terragrunt-cache
 
