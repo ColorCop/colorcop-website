@@ -23,6 +23,7 @@ EOF
 }
 
 # Configure Terragrunt to store tfstate files in an S3 bucket
+# This ends up as the backend.tf:
 remote_state {
   backend = "s3"
   config = {
