@@ -5,12 +5,12 @@ permalink: /credits/
 ---
 
 <p>
-    <a class="lnk" href="http://j4y.net/" data-proofer-ignore>Jay Prall</a><br />
+    <a class="lnk" href="https://j4y.net/">Jay Prall</a><br />
     author
 </p>
 
 <p>
-    <a class="lnk" href="http://kaidjuric.com/" data-proofer-ignore>Kajica Djuric</a><br />
+    Kajica Djuric<br />
 </p>
 
 <p>
