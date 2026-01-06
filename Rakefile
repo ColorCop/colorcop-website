@@ -41,7 +41,11 @@ task lint: :build do
   sh 'tflint --chdir terraform/website/ -c ../../.tflint.hcl'
 
   # HTML linting
-  options = { ignore_status_codes: [400] }
+  options = {
+    check_html: true,
+    check_external_hash: true
+  }
+
   HTMLProofer.check_directory('./_site', options).run
 end
 
