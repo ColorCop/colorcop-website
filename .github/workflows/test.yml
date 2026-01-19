@@ -15,10 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Install mise
+      uses: jdx/mise-action@v3
+
+    - name: Install tools
+      run: mise install
+
+    - name: Install Ruby gems
+      run: bundle install
 
     - name: Setup TFLint
       uses: terraform-linters/setup-tflint@v6
@@ -26,10 +30,7 @@ jobs:
         tflint_version: v0.50.3
 
     - name: Run linters
-      run: bundle exec rake lint
-      # needed to add new pages
-      continue-on-error: true
-
+      run: mise lint
 
     - uses: actions/setup-node@v6
       with:

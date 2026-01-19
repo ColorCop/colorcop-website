@@ -8,6 +8,4 @@ gem 'csv'
 gem 'faraday'
 gem 'html-proofer'
 gem 'jekyll'
-gem 'rake'
 gem 'rubocop', require: false
-gem 'rubocop-rake'
