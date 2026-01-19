@@ -4,16 +4,19 @@ title: credits
 permalink: /credits/
 ---
 
+<h1>Credits</h1>
+
 <p>
-    <a class="lnk" href="https://j4y.net/">Jay Prall</a><br />
-    author
+  <a class="lnk" href="https://j4y.net/">Jay Prall</a><br />
+  <span>Author</span>
 </p>
 
 <p>
-    Kajica Djuric<br />
+  <span>Kajica Djuric</span><br />
+  <span>Artwork</span>
 </p>
 
 <p>
-    Raul Matei<br />
-    new icon
+  <span>Raul Matei</span><br />
+  <span>New Icon</span>
 </p>
