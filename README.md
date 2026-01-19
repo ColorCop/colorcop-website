@@ -1,37 +1,31 @@
 # colorcop-website
 
 [![GitHub Actions Status](https://github.com/ColorCop/colorcop-website/workflows/Test/badge.svg)](https://github.com/ColorCop/colorcop-website/actions)
-![Powered by Rake](https://img.shields.io/badge/powered_by-rake-blue?logo=ruby)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A static website for the ColorCop project, built with Jekyll and managed using mise for consistent tooling and reproducible development environments.
+
+---
 
 ## Installation
 
-This project uses mise to configure the development environment.  Install it and then run `mise install`.
+This project uses mise to configure the development environment.
 
-Install the required ruby gems:
-
-```
-bundle install
-```
+- Install [mise](https://mise.jdx.dev/getting-started.html)
+- Run `mise trust` and answer yes.
+- Run `mise install` to install the required tools
+- Run `bundle install`
 
 ## Running locally
 
-```
-jekyll serve
-```
-
-## Running tests
-
-There is a rake task that runs [Playwright](https://github.com/microsoft/playwright) tests.
-
-```
-rake test
+```sh
+mise serve
 ```
 
 ## Running linters
 
-```
-rake lint
+```sh
+mise lint
 ```
 
 ## Deploy

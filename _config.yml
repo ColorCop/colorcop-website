@@ -11,11 +11,10 @@ github_username: colorcop
 # Build settings
 markdown: kramdown
 
-# exclude some directories and files that don't belong in the website
+# exclude some directories and files that shouldn't be published
 exclude:
   - terraform
   - terragrunt
-  - Rakefile
   - README.md
   - package*
   - playwright*

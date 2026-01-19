@@ -1,4 +1,32 @@
 [tools]
-ruby = '3.3.9'
-terragrunt = '0.86.0'
-opentofu = '1.6.2'
+ruby = "3.3.9"
+terragrunt = "0.86.0"
+# Use a direct tarball URL so mise doesn't call the GitHub API
+opentofu = { version = "1.6.2", url = "https://github.com/opentofu/opentofu/releases/download/v1.6.2/opentofu_1.6.2_linux_amd64.tar.gz" }
+
+[tasks.build]
+description = "Build the Jekyll project"
+run = "bundle exec jekyll build"
+
+[tasks.lint]
+description = "Run all linters"
+depends = ["build"]
+run = [
+  # Ruby lint
+  "bundle exec rubocop",
+
+  # Terraform lint
+  "tflint --init",
+  "tflint --chdir terraform/website/ -c ../../.tflint.hcl",
+
+  # HTML linting
+  "bundle exec htmlproofer ./_site --check-external-hash"
+]
+
+[tasks.serve]
+description = "Serve the Jekyll project with live reload"
+run = "bundle exec jekyll serve --livereload --watch --port 4000 --host 127.0.0.1"
+
+[tasks.default]
+description = "Default task"
+depends = ["test", "lint"]

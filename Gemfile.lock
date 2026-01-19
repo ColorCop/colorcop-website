@@ -179,9 +179,6 @@ GEM
     rubocop-ast (1.49.0)
       parser (>= 3.3.7.2)
       prism (~> 1.7)
-    rubocop-rake (0.7.1)
-      lint_roller (~> 1.1)
-      rubocop (>= 1.72.1)
     ruby-progressbar (1.13.0)
     ruby-rc4 (0.1.5)
     safe_yaml (1.0.5)
@@ -237,9 +234,7 @@ DEPENDENCIES
   faraday
   html-proofer
   jekyll
-  rake
   rubocop
-  rubocop-rake
 
 RUBY VERSION
    ruby 3.3.9p170
