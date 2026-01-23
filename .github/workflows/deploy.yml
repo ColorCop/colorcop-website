@@ -110,5 +110,7 @@ jobs:
       with:
         name: terraform-lock-files
         path: |
-          **/.terraform.lock.hcl
+          terraform/website/.terraform.lock.hcl
+          terragrunt/live/website/.terraform.lock.hcl
+          terragrunt/dev/website/.terraform.lock.hcl
         if-no-files-found: ignore
