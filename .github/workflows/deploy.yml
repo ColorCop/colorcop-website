@@ -11,9 +11,9 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        description: "Branch to deploy"
+        description: Branch to deploy
         required: true
-        default: ${{ github.ref_name }}
+        # user must select a branch when triggering workflow manually
 
 env:
   working_dir: terragrunt/live/website
