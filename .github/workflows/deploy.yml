@@ -10,6 +10,11 @@ on:
       # branches that match deploy-* will deploy as well
       - deploy-*
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to deploy"
+        required: true
+        default: ${{ github.ref_name }}
 
 env:
   working_dir: terragrunt/live/website
@@ -48,15 +53,6 @@ jobs:
       with:
         tg_dir: ${{ env.working_dir }}
         tg_command: apply
-
-    # - name: Terragrunt Output
-    #   uses: gruntwork-io/terragrunt-action@v3
-    #   env:
-    #     TG_TF_FORWARD_STDOUT: 1
-    #     TG_NO_COLOR: 1
-    #   with:
-    #     tg_dir: ${{ env.working_dir }}
-    #     tg_command: output
 
     - name: Read Values
       id: terragrunt_output
