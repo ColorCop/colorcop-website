@@ -89,6 +89,7 @@ jobs:
 
         echo "Git status after build:"
         git status
+        git diff
 
         CHANGES="$(git status --porcelain)"
         if [ -n "$CHANGES" ]; then
