@@ -103,3 +103,12 @@ jobs:
         else
           echo "✅ No uncommitted changes after deploy."
         fi
+
+    - name: Upload lock files on failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: terraform-lock-files
+        path: |
+          **/.terraform.lock.hcl
+        if-no-files-found: ignore
