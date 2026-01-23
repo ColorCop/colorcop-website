@@ -42,18 +42,24 @@ jobs:
 
     - name: Update Terraform State and Providers
       uses: gruntwork-io/terragrunt-action@v3
+      env:
+        TERRAGRUNT_DISABLE_COPY: true
       with:
         tg_dir: ${{ env.working_dir }}
         tg_command: init --upgrade
 
     - name: Terragrunt Plan
       uses: gruntwork-io/terragrunt-action@v3
+      env:
+        TERRAGRUNT_DISABLE_COPY: true
       with:
         tg_dir: ${{ env.working_dir }}
         tg_command: plan
 
     - name: Terragrunt Apply
       uses: gruntwork-io/terragrunt-action@v3
+      env:
+        TERRAGRUNT_DISABLE_COPY: true
       with:
         tg_dir: ${{ env.working_dir }}
         tg_command: apply
