@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - main
-      # branches that match deploy-* will deploy as well
       - deploy-*
   workflow_dispatch:
     inputs:
@@ -27,7 +26,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v6
+    - name: Checkout selected branch
+      uses: actions/checkout@v6
+      with:
+        # If workflow_dispatch, use the selected branch.
+        # If push event, use the branch that triggered the workflow.
+        ref: ${{ github.event.inputs.branch || github.ref_name }}
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v5.1.1
@@ -85,6 +89,7 @@ jobs:
 
         echo "Git status after build:"
         git status
+        git diff
 
         CHANGES="$(git status --porcelain)"
         if [ -n "$CHANGES" ]; then
@@ -98,4 +103,3 @@ jobs:
         else
           echo "✅ No uncommitted changes after deploy."
         fi
-
