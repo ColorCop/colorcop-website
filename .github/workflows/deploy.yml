@@ -112,7 +112,7 @@ jobs:
 
     - name: Upload lock files on failure
       if: failure()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: terraform-lock-files
         path: |
